@@ -278,15 +278,20 @@ function carryOverYesterday(dateStr) {
 
     if (exists) return;
 
-    createActivity({
-      title: old.title,
-      date: dateStr,
-      time: old.time,
-      duration: old.duration,
-      note: old.note,
-      category: old.category,
-      source: "carry"
-    });
+    db.activities.push({
+  id: uid(),
+  title: old.title,
+  date: dateStr,
+  time: old.time,
+  duration: old.duration,
+  note: old.note,
+  category: old.category,
+  source: "carry",
+  sourceId: null,
+  status: "pending",
+  createdAt: new Date().toISOString(),
+  completedAt: null
+});
   });
 }
 

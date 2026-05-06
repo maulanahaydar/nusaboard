@@ -1,3 +1,29 @@
+// Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  setDoc,
+  doc,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCZRsCYOB3F0jAhCzM-U8B0IVZcwGJn_aI",
+  authDomain: "lifeboard-60f41.firebaseapp.com",
+  projectId: "lifeboard-60f41",
+  storageBucket: "lifeboard-60f41.firebasestorage.app",
+  messagingSenderId: "797487333867",
+  appId: "1:797487333867:web:bddab4525c265e6c78d9ae",
+  measurementId: "G-GWZCN7SXB6"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const firestore = getFirestore(firebaseApp);
+
 /* =========================
    LIFEBOARD APP.JS
    PART 1 / 2
@@ -45,8 +71,13 @@ const MONTH_NAMES = [
   "Jul","Aug","Sep","Oct","Nov","Dec"
 ];
 
-function saveDB() {
+async function saveDB() {
   localStorage.setItem("lifeboard", JSON.stringify(db));
+
+  await setDoc(
+    doc(firestore, "lifeboard", "main"),
+    db
+  );
 }
 
 function uid() {
@@ -180,7 +211,7 @@ function activityStatus(act) {
   return act.status || "pending";
 }
 
-function createActivity(data) {
+async function createActivity(data) {
   db.activities.push({
     id: uid(),
     title: data.title || "",
@@ -195,6 +226,8 @@ function createActivity(data) {
     createdAt: new Date().toISOString(),
     completedAt: null
   });
+
+  await saveDB();
 }
 
 function ensureHabitActivities(dateStr) {
@@ -253,10 +286,10 @@ function carryOverYesterday(dateStr) {
   });
 }
 
-function prepareDay(dateStr) {
+async function prepareDay(dateStr) {
   ensureHabitActivities(dateStr);
   carryOverYesterday(dateStr);
-  saveDB();
+  await saveDB();
 }
 
 function getActivitiesByDate(dateStr) {
@@ -806,7 +839,7 @@ const oldRender = render;
 render = function () {
   if (!state.unlocked) return;
 
-  prepareDay(state.selectedDate);
+  prepareDay(state.selectedDate).then(() => {});;
 
   const title = document.getElementById("page-title");
   const subtitle = document.getElementById("page-subtitle");
@@ -995,11 +1028,14 @@ function openEditor(prefill = {}) {
   renderSidePanel();
 }
 
-function saveEditor() {
+async function saveEditor() {
   const title = document.getElementById("editor-title").value.trim();
-  if (!title) return alert("isi activity");
 
-  createActivity({
+  if (!title) {
+    return alert("isi activity");
+  }
+
+  await createActivity({
     title,
     date: document.getElementById("editor-date").value,
     time: document.getElementById("editor-time").value,
@@ -1009,9 +1045,8 @@ function saveEditor() {
     source: "task"
   });
 
-  saveDB();
-
   state.panelTab = "openloop";
+
   render();
 }
 
@@ -1170,3 +1205,19 @@ render = function () {
     setTimeout(scrollToCurrentRow, 80);
   }
 };
+
+// ===== FIREBASE LOAD =====
+
+async function loadCloudDB() {
+  const snap = await getDocs(collection(firestore, "lifeboard"));
+
+  snap.forEach((d) => {
+    if (d.id === "main") {
+      db = d.data();
+    }
+  });
+
+  render();
+}
+
+loadCloudDB();

@@ -318,30 +318,33 @@ button{
 /* floating action */
 #fab-btn{
   position:fixed;
-  top:18px;
-  right:18px;
+  top:16px;
+  right:16px;
   z-index:999;
+  width:52px;
+  height:52px;
   border:none;
-  border-radius:999px;
-  padding:12px 18px;
+  border-radius:50%;
+  font-size:24px;
   font-weight:700;
   color:white;
-  background:rgba(29,78,216,.9);
+  background:rgba(29,78,216,.95);
   backdrop-filter:blur(16px);
   box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
 .fab-panel{
   position:fixed;
-  top:72px;
-  right:18px;
-  width:min(420px, calc(100vw - 36px));
-  max-height:75vh;
+  top:76px;
+  right:16px;
+  width:360px;
+  max-width:calc(100vw - 24px);
+  max-height:78vh;
   z-index:998;
   overflow:hidden;
   border-radius:24px;
   border:1px solid rgba(255,255,255,.08);
-  background:rgba(8,17,31,.95);
+  background:rgba(8,17,31,.97);
   backdrop-filter:blur(20px);
   box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
@@ -368,9 +371,9 @@ button{
 }
 
 .fab-content{
-  max-height:calc(75vh - 72px);
+  max-height:calc(78vh - 72px);
   overflow:auto;
-  padding:18px;
+  padding:14px;
 }
 
 .right-panel{

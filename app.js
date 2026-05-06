@@ -270,29 +270,29 @@ function carryOverYesterday(dateStr) {
   );
 
   olds.forEach(old => {
-    const exists = db.activities.find(a =>
-      a.date === dateStr &&
-      a.title === old.title &&
-      a.source === "carry"
-    );
+  const exists = db.activities.find(a =>
+    a.date === dateStr &&
+    a.title === old.title &&
+    a.source === "carry"
+  );
 
-    if (exists) return;
+  if (exists) return;
 
-    db.activities.push({
-  id: uid(),
-  title: old.title,
-  date: dateStr,
-  time: old.time,
-  duration: old.duration,
-  note: old.note,
-  category: old.category,
-  source: "carry",
-  sourceId: null,
-  status: "pending",
-  createdAt: new Date().toISOString(),
-  completedAt: null
-});
+  db.activities.push({
+    id: uid(),
+    title: old.title,
+    date: dateStr,
+    time: old.time,
+    duration: old.duration,
+    note: old.note,
+    category: old.category,
+    source: "carry",
+    sourceId: null,
+    status: "pending",
+    createdAt: new Date().toISOString(),
+    completedAt: null
   });
+});
 }
 
 function prepareDay(dateStr) {

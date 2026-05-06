@@ -888,7 +888,7 @@ render = function () {
   }
 
   bindDynamicEvents();
-  renderSidePanel();
+renderSidePanel();
 
 if (state.page === "daily") {
   setTimeout(scrollToCurrentRow, 80);
@@ -1200,17 +1200,6 @@ document.addEventListener("click", function(e){
     openEditor();
   }
 });
-
-// auto scroll setelah render
-const oldRenderAutoScroll = render;
-
-render = function () {
-  oldRenderAutoScroll();
-
-  if (state.page === "daily") {
-    setTimeout(scrollToCurrentRow, 80);
-  }
-};
 
 // ===== FIREBASE LOAD =====
 

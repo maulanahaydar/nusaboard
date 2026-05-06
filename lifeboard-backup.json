@@ -1,0 +1,85 @@
+{
+  "settings": {
+    "password": "Hexen999"
+  },
+  "categories": [
+    "Ibadah",
+    "Health",
+    "Work",
+    "Business",
+    "Family",
+    "Study",
+    "Social",
+    "Admin",
+    "Other"
+  ],
+  "habits": [
+    {
+      "id": 1001,
+      "title": "Ngaji",
+      "time": "05:30",
+      "duration": "30m",
+      "preset": "Daily",
+      "customDays": [],
+      "note": "",
+      "category": "Ibadah",
+      "active": true
+    },
+    {
+      "id": 1002,
+      "title": "Workout",
+      "time": "06:15",
+      "duration": "45m",
+      "preset": "Weekdays",
+      "customDays": [],
+      "note": "cardio",
+      "category": "Health",
+      "active": true
+    },
+    {
+      "id": 1003,
+      "title": "Weekly Review",
+      "time": "20:00",
+      "duration": "45m",
+      "preset": "Custom",
+      "customDays": ["Sun"],
+      "note": "",
+      "category": "Work",
+      "active": true
+    }
+  ],
+  "activities": [
+    {
+      "id": 2001,
+      "title": "Follow up supplier",
+      "date": "2026-05-05",
+      "time": "14:17",
+      "duration": "30m",
+      "note": "MOQ",
+      "category": "Business",
+      "source": "task",
+      "sourceId": null,
+      "status": "pending",
+      "createdAt": "2026-05-05T07:00:00.000Z",
+      "completedAt": null
+    },
+    {
+      "id": 2002,
+      "title": "Review proposal",
+      "date": "2026-05-05",
+      "time": "20:10",
+      "duration": "45m",
+      "note": "",
+      "category": "Work",
+      "source": "carry",
+      "sourceId": null,
+      "status": "pending",
+      "createdAt": "2026-05-05T07:00:00.000Z",
+      "completedAt": null
+    }
+  ],
+  "targets": [],
+  "projects": [],
+  "finance": [],
+  "vault": []
+}

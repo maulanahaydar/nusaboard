@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LifeBoard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- LOCK SCREEN -->
+  <div id="lock-screen" class="lock-wrap">
+    <div class="lock-card">
+      <h1>LifeBoard</h1>
+      <p>Personal Operating System</p>
+
+      <input
+        id="password-input"
+        type="password"
+        placeholder="Password"
+        autocomplete="off"
+      >
+
+      <button id="unlock-btn">Unlock</button>
+      <div id="lock-msg"></div>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="app-shell" class="app-shell hidden">
+
+    <!-- MOBILE TOPBAR -->
+    <header class="mobile-topbar">
+      <button id="menu-btn">☰</button>
+      <div class="brand-mobile">LifeBoard</div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+      <div class="brand">
+        <h2>LifeBoard</h2>
+        <small>Personal Operating System</small>
+      </div>
+
+      <nav class="menu">
+        <button data-page="dashboard">Dashboard</button>
+        <button data-page="daily">Daily Log</button>
+        <button data-page="habit">Habit Engine</button>
+        <button data-page="target">Target</button>
+        <button data-page="project">Project</button>
+        <button data-page="finance">Finance</button>
+        <button data-page="vault">Vault</button>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="main-header">
+        <div>
+          <h1 id="page-title">Dashboard</h1>
+          <p id="page-subtitle">Welcome back</p>
+        </div>
+
+        <div class="top-actions">
+          <input id="global-search" placeholder="Search...">
+          <button id="export-btn">Export</button>
+          <button id="import-btn">Import</button>
+          <input id="import-file" type="file" hidden>
+        </div>
+      </div>
+
+      <div class="content-layout">
+
+        <!-- CENTER -->
+        <section id="main-content" class="main-content">
+          <!-- rendered by js -->
+        </section>
+
+        <!-- RIGHT PANEL -->
+        <aside class="right-panel">
+          <div class="panel-tabs">
+            <button class="panel-tab active" data-tab="openloop">Open Loop</button>
+            <button class="panel-tab" data-tab="backlog">Backlog</button>
+            <button class="panel-tab" data-tab="editor">Add/Edit</button>
+          </div>
+
+          <div id="side-panel-content" class="panel-content">
+            <!-- rendered by js -->
+          </div>
+        </aside>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -8,8 +8,10 @@
 </head>
 <body>
 
-  <!-- LOCK SCREEN -->
-  <div id="lock-screen" class="lock-wrap">
+  <!-- =========================
+  LOCK SCREEN
+  ========================== -->
+  <section id="lock-screen" class="lock-wrap">
     <div class="lock-card">
       <h1>LifeBoard</h1>
       <p>Personal Operating System</p>
@@ -22,26 +24,40 @@
       >
 
       <button id="unlock-btn">Unlock</button>
-      <div id="lock-msg"></div>
+
+      <p id="lock-msg"></p>
     </div>
-  </div>
+  </section>
 
-  <!-- APP -->
-  <div id="app-shell" class="app-shell hidden">
 
-    <!-- MOBILE TOPBAR -->
+  <!-- =========================
+  APP SHELL
+  ========================== -->
+  <section id="app-shell" class="app-shell hidden">
+
+
+    <!-- =========================
+    MOBILE TOPBAR
+    ========================== -->
     <header class="mobile-topbar">
-      <button id="menu-btn">☰</button>
+      <button id="menu-btn" class="icon-btn">☰</button>
       <div class="brand-mobile">LifeBoard</div>
+      <div class="mobile-space"></div>
     </header>
 
-    <!-- SIDEBAR -->
+
+    <!-- =========================
+    SIDEBAR
+    ========================== -->
     <aside id="sidebar" class="sidebar">
+
+      <!-- Brand -->
       <div class="brand">
         <h2>LifeBoard</h2>
         <small>Personal Operating System</small>
       </div>
 
+      <!-- Navigation -->
       <nav class="menu">
         <button data-page="dashboard">Dashboard</button>
         <button data-page="daily">Daily Log</button>
@@ -51,32 +67,85 @@
         <button data-page="finance">Finance</button>
         <button data-page="vault">Vault</button>
       </nav>
+
     </aside>
 
-    <!-- MAIN -->
+
+    <!-- =========================
+    MAIN
+    ========================== -->
     <main class="main">
-      <div class="main-header">
-        <div>
-          <h1 id="page-title">Dashboard</h1>
-          <p id="page-subtitle">Welcome back</p>
+
+
+      <!-- =========================
+      STICKY HEADER
+      kiri = brand
+      kanan = +
+      ========================== -->
+      <header class="main-header">
+
+        <div class="header-left">
+          <button id="desktop-menu-btn" class="icon-btn">☰</button>
+
+          <div class="header-brand">
+            <h1>LifeBoard</h1>
+            <small id="page-subtitle">Welcome back</small>
+          </div>
         </div>
 
-        <div class="top-actions">
-          <button id="add-btn">＋</button>
+        <div class="header-right">
+          <button id="add-btn" class="add-btn">+</button>
         </div>
-        <input id="import-file" type="file" hidden>
-      </div>
 
-      <div class="content-layout">
-        <section id="main-content" class="main-content">
-        <!-- rendered by js -->
-        </section>
-      </div>
+      </header>
 
-  <div id="side-panel-content" class="hidden"></div>
+
+      <!-- =========================
+      PAGE CONTENT
+      render JS masuk sini
+      ========================== -->
+      <section id="main-content" class="main-content"></section>
+
+
+      <!-- =========================
+      MODAL
+      dipakai untuk:
+      - Add / Edit
+      - Open Loop
+      - Backlog
+      ========================== -->
+      <section id="modal-root" class="modal-root hidden">
+        <div id="modal-backdrop" class="modal-backdrop"></div>
+
+        <div class="modal-card">
+
+          <div class="modal-header">
+            <h3 id="modal-title">Panel</h3>
+
+            <button id="modal-close" class="icon-btn">
+              ✕
+            </button>
+          </div>
+
+          <div class="modal-tabs">
+            <button data-modal-tab="editor">Add / Edit</button>
+            <button data-modal-tab="backlog">Backlog</button>
+          </div>
+
+          <div id="modal-content" class="modal-content">
+            <!-- render JS -->
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- hidden utility -->
+      <input id="import-file" type="file" hidden>
+
     </main>
 
-  </div>
+  </section>
 
   <script type="module" src="app.js"></script>
 </body>

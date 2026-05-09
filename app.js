@@ -404,13 +404,21 @@ function bindStaticEvents() {
     });
   });
 
-  document.getElementById("export-btn").addEventListener("click", exportJSON);
+  const exportBtn = document.getElementById("export-btn");
+const importBtn = document.getElementById("import-btn");
+const importFile = document.getElementById("import-file");
 
-  document.getElementById("import-btn").addEventListener("click", () => {
-    document.getElementById("import-file").click();
-  });
+if (exportBtn) {
+  exportBtn.addEventListener("click", exportJSON);
+}
 
-  document.getElementById("import-file").addEventListener("change", importJSON);
+if (importBtn && importFile) {
+  importBtn.addEventListener("click", () => importFile.click());
+}
+
+if (importFile) {
+  importFile.addEventListener("change", importJSON);
+}
 
   document.getElementById("add-btn").addEventListener("click", () => {
   openEditor();

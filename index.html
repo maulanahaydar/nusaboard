@@ -62,33 +62,18 @@
         </div>
 
         <div class="top-actions">
-          <input id="global-search" placeholder="Search...">
-          <button id="export-btn">Export</button>
-          <button id="import-btn">Import</button>
-          <input id="import-file" type="file" hidden>
+          <button id="add-btn">＋</button>
         </div>
+        <input id="import-file" type="file" hidden>
       </div>
 
       <div class="content-layout">
+        <section id="main-content" class="main-content">
+        <!-- rendered by js -->
+        </section>
+      </div>
 
-  <section id="main-content" class="main-content">
-    <!-- rendered by js -->
-  </section>
-
-</div>
-
-<button id="fab-btn">⚡ Actio<button id="fab-btn">⚡</button>ns</button>
-
-<div id="fab-panel" class="fab-panel hidden">
-  <div class="fab-menu">
-    <button class="fab-item" data-tab="editor">+ Add / Edit</button>
-    <button class="fab-item" data-tab="openloop">Open Loop</button>
-    <button class="fab-item" data-tab="backlog">Backlog</button>
-  </div>
-
-  <div id="side-panel-content" class="fab-content">
-    <!-- rendered by js -->
-  </div>
+  <div id="side-panel-content" class="fab-content"></div>
 </div>
     </main>
 

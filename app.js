@@ -1024,11 +1024,6 @@ function scrollToCurrentRow() {
 function openEditor(prefill = {}) {
   state.panelTab = "editor";
 
-  const panelBtns = document.querySelectorAll(".panel-tab");
-  panelBtns.forEach(x => x.classList.remove("active"));
-  const editorBtn = document.querySelector('[data-tab="editor"]');
-  if (editorBtn) editorBtn.classList.add("active");
-
   const defaults = {
     title: "",
     date: state.selectedDate,
@@ -1039,11 +1034,14 @@ function openEditor(prefill = {}) {
   };
 
   state.editing = {
-  isHabit: prefill.isHabit || false,
-  habitId: prefill.habitId || null,
-  ...defaults,
-  ...prefill
-};
+    isHabit: prefill.isHabit || false,
+    habitId: prefill.habitId || null,
+    ...defaults,
+    ...prefill
+  };
+
+  const panel = document.getElementById("side-panel-content");
+  panel.classList.remove("hidden");
 
   renderSidePanel();
 }
@@ -1146,9 +1144,9 @@ renderSidePanel = function () {
 
     document.getElementById("editor-save").onclick = saveEditor;
     document.getElementById("editor-cancel").onclick = () => {
-      state.panelTab = "openloop";
-      render();
-    };
+  document.getElementById("side-panel-content").classList.add("hidden");
+  render();
+};
 
     const delBtn = document.getElementById("editor-delete");
 
